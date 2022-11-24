@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.*;
 
+import run.ClientReceive;
 import run.ClientSend;
 
 public class Client {
@@ -18,6 +19,9 @@ public class Client {
             is = clientSocket.getInputStream();
             ClientSend clientsend=new ClientSend(sc, os, clientSocket);
             clientsend.start();
+
+            ClientReceive ClientReceive=new ClientReceive(clientSocket);
+            ClientReceive.start();
         } catch (Exception e) {
             e.printStackTrace();
         }

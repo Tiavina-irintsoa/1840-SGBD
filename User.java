@@ -9,7 +9,7 @@ public class User {
     OutputStream os;
     InputStream is;
     int id;
-
+    
     public User(int id){
         this.id=id;
     }
@@ -17,10 +17,9 @@ public class User {
         System.out.println("Nouveau client: "+id);
         try {
             is=clientSocket.getInputStream();  
-            ServerReceive serverReceive= new ServerReceive(is);
+            ServerReceive serverReceive= new ServerReceive(clientSocket);
             serverReceive.start();      
         } catch (Exception e) {
-            // TODO: handle exception
         }
         
     }
