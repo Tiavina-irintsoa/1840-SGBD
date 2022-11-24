@@ -1,38 +1,24 @@
-package view;
+package connection;
+
 import java.io.*;
-import java.net.*;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.util.Scanner;
+import java.net.Socket;
+import java.util.*;
+
+import run.ClientSend;
 
 public class Client {
-    public void setMessage(String message, ObjectOutputStream object) throws Exception{
-        object.writeObject(message);
-    }
-    public Client(int port, String host){
-        try{
-            Scanner sc=new Scanner(System.in);
-            boolean connected=true;
-            Socket client = new Socket(host,port);
-            OutputStream os=client.getOutputStream();
-            ObjectOutputStream sql=new ObjectOutputStream(os);
-            while(connected==true){
-                System.out.print(">Requete: ");
-                String request = sc.nextLine();
-                setMessage(request, sql);
-
-                if(request.compareToIgnoreCase("quit")==0){
-                    break;
-                }
-                InputStream is=client.getInputStream();  
-                ObjectInputStream mess=new ObjectInputStream(is);                
-                String obj=String.valueOf(mess.readObject());
-                System.out.println(obj);
-
-            }
-            os.close();
-        }
-        catch(Exception e){
+    public static void main(String[] args) {
+        final Socket clientSocket;
+        OutputStream os;
+        final InputStream is;
+        final Scanner sc = new Scanner(System.in);
+        try {
+            clientSocket = new Socket("localhost",1000);
+            os = clientSocket.getOutputStream();
+            is = clientSocket.getInputStream();
+            ClientSend clientsend=new ClientSend(sc, os, clientSocket);
+            clientsend.start();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
