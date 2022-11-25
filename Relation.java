@@ -393,7 +393,7 @@ public class Relation {
     public Relation distinct(String col){
         return new Relation(nomColonnes,toArray(toVector(content)),"distinct");
     }
-    // division this/r1    , ing , rec
+    // division this/r1 , ing , rec
     public Relation division(Relation r1, String colonne1, String colonne2){
         String[] ingrec=new String[2];
         ingrec[0]=colonne2;

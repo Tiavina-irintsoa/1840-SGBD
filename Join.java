@@ -5,7 +5,7 @@ import datacontainer.Relation;
 public class Join extends KeyWord{
     public Join(){
         super("join");
-        super.setNext(new Select());
+        super.setNext(new Divide());
     }
     public Object execute(Object res, Execution exec,Vector<String> args){
         try {
@@ -17,7 +17,6 @@ public class Join extends KeyWord{
             Relation tojoin=exec.getRelation(exec.contains(nombdd));
             Relation r=((Relation) res).join(tojoin);
             System.out.println("res:");
-            r.afficher();
             if(args.size()>1){
                 int next=1;
                 while(args.get(next).compareToIgnoreCase("join")==0){
