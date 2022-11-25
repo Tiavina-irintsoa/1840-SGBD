@@ -10,6 +10,24 @@ public class Relation {
         this.nomColonnes=nomCol;
         this.nom=nom;
     }
+    public Vector<Vector<String>> toVector(){
+        Vector<Vector<String>> all=new Vector<Vector<String>>();
+
+        Vector<String> nomCols=new Vector<String>();
+        for(int i=0;i<nomColonnes.length;i++){
+            nomCols.add(nomColonnes[i]);
+        }
+        Vector v;
+        all.add(nomCols);
+        for(int row=0;row<content.length;row++){
+            v=new Vector<String>();
+            for(int col=0;col<nomColonnes.length;col++){
+                v.add((String) content[row][col]);
+            }
+            all.add(v);
+        }   
+        return all;
+    }
     public Relation(String nomtable) throws Exception{
         this.nom=nomtable;
         Vector<String> filecontent=Fichier.read(nomtable,"donnees");

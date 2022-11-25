@@ -11,7 +11,8 @@ public class Execution {
 
     public String getBdd(){
         return bdd;
-    }   
+    }
+       
     public Execution() throws Exception{
         File directory=new File(bdd);
         File[] files=directory.listFiles();
@@ -79,6 +80,9 @@ public class Execution {
             res=kw.get(ikw).execute(res,this,args);
             
             ikw++;
+        }
+        if(res instanceof Relation){
+            return ((Relation) res).toVector();
         }
         return res;
     }

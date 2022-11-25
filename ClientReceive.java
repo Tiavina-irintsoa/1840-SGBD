@@ -14,7 +14,6 @@ public class ClientReceive extends Thread{
         try {
             Object objis=new ObjectInputStream(client.getInputStream());
             while(true){
-                System.out.println(objis.getClass().getName());
                 if(objis instanceof Relation){
                     ((Relation) objis).afficher();
                 }

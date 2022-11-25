@@ -19,7 +19,8 @@ public class User {
             is=clientSocket.getInputStream();  
             ServerReceive serverReceive= new ServerReceive(clientSocket);
             serverReceive.start();      
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
         }
         
     }

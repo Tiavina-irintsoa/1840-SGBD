@@ -19,7 +19,6 @@ public class ServerReceive extends Thread{
 
             OutputStream os= client.getOutputStream();
             ObjectOutputStream objos=new ObjectOutputStream(os);
-
             while(true){
                 System.out.println("new Request:");
                 sql=(String) objis.readObject();
@@ -33,7 +32,7 @@ public class ServerReceive extends Thread{
             }
         }
         catch (Exception e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }
