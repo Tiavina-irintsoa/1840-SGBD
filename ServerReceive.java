@@ -3,6 +3,7 @@ package run;
 import java.io.*;
 import java.net.Socket;
 
+import datacontainer.Execution;
 
 public class ServerReceive extends Thread{
     String sql;
@@ -23,9 +24,11 @@ public class ServerReceive extends Thread{
                 System.out.println("new Request:");
                 sql=(String) objis.readObject();
                 System.out.println(sql);
-
-
-                returnvalue="Retour";
+                if(sql.compareToIgnoreCase("bye")==0){
+                    client.close();
+                }
+                Execution exec=new Execution();
+                returnvalue=exec.execute(sql);
                 objos.writeObject(returnvalue);
             }
         }

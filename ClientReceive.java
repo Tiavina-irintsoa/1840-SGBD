@@ -3,16 +3,27 @@ package run;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
+import datacontainer.Relation;
+
 public class ClientReceive extends Thread{
     Socket client;
     public ClientReceive(Socket clientSocket){
         this.client = clientSocket;
     }
-    public void run() {
+    public void run(){
         try {
-            ObjectInputStream objis=new ObjectInputStream(client.getInputStream());
+            Object objis=new ObjectInputStream(client.getInputStream());
             while(true){
-                System.out.println((String) objis.readObject());
+                System.out.println(objis.getClass().getName());
+                if(objis instanceof Relation){
+                    ((Relation) objis).afficher();
+                }
+                if(objis instanceof Exception){
+                    System.out.println(((Exception) objis).getMessage());
+                }
+                if(objis instanceof String){
+                    System.out.println((String) objis);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
