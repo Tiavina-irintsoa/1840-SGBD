@@ -26,9 +26,16 @@ public class ServerReceive extends Thread{
                 if(sql.compareToIgnoreCase("bye")==0){
                     client.close();
                 }
-                Execution exec=new Execution();
-                returnvalue=exec.execute(sql);
-                objos.writeObject(returnvalue);
+                try {
+                    Execution exec=new Execution();
+                    returnvalue=exec.execute(sql);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    returnvalue=e;
+                }
+                finally{
+                    objos.writeObject(returnvalue);
+                }
             }
         }
         catch (Exception e) {

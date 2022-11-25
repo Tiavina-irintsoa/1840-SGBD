@@ -21,7 +21,8 @@ public class Relation {
         all.add(nomCols);
         for(int row=0;row<content.length;row++){
             v=new Vector<String>();
-            for(int col=0;col<nomColonnes.length;col++){
+            for(int col=0;col<content[row].length;col++){
+                System.out.println((String) content[row][col]);
                 v.add((String) content[row][col]);
             }
             all.add(v);

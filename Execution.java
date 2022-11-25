@@ -23,8 +23,7 @@ public class Execution {
             }
         } 
         catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Veuillez verifier les fichiers");
+            throw e;
        }
     }   
     public int locate(String[] sql,String recherche){

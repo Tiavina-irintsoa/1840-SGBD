@@ -43,6 +43,7 @@ public class Fichier extends File{
         for(int i=0;i<values.length;i++){
             bfw.write(values[i]+"%%");
         }
+        bfw.newLine();
         bfw.close();
     }
     public static Vector<String> read(String path,String fichier) throws Exception{
