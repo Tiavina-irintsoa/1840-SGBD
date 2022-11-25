@@ -9,11 +9,11 @@ public class From extends KeyWord{
         super("from");
         super.setNext(new Where());
     }
-    public Relation execute(Relation res, Execution exec,Vector<String> args) throws Exception{
+    public Relation execute(Object res, Execution exec,Vector<String> args) throws Exception{
         try{
             checkSyntaxe(exec, args);
             res = exec.getRelation(exec.contains(args.get(0)));
-            return res;
+            return (Relation) res;
         }        
         catch(Exception e){
             System.out.println("nahita exeption");

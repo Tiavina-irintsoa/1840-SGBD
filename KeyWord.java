@@ -17,7 +17,7 @@ public class KeyWord {
     public  String getIntitule(){
         return this.intitule;
     }
-    public Relation execute(Relation res, Execution exec,Vector<String> args) throws Exception{
+    public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
         return res;
     }
     public int nearest(String[] mots, Vector<KeyWord> liste, int locate, String not){

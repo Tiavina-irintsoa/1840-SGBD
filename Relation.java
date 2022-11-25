@@ -239,21 +239,34 @@ public class Relation {
 }
     public int[] getCommonCol(Relation b) throws Exception{
         int[] colsindex=new int[2];
-        for(int i=0;i<this.nomColonnes.length;i++){
-            for(int ib=0;ib<b.nomColonnes.length;ib++){
-                if(nomColonnes[i].compareTo(b.nomColonnes[ib])==0){
-                    colsindex[0]=i;
-                    colsindex[1]=ib;
-                    return colsindex;
+        try{
+            for(int i=0;i<this.nomColonnes.length;i++){
+                System.out.println("colonnes"+nomColonnes[i]+" seen");
+                System.out.println("yes");
+                System.out.println("length"+b.nomColonnes.length);
+                for(int ib=0;ib<b.nomColonnes.length;ib++){
+                    System.out.println(" sy colonnes"+b.nomColonnes[ib]);
+                    if(nomColonnes[i].compareToIgnoreCase(b.nomColonnes[ib])==0){
+                        colsindex[0]=i;
+                        colsindex[1]=ib;
+                        System.out.println("nahita colonnes mitovy"+i+","+ib);
+                        return colsindex;
+                    }
                 }
             }
+        }
+        catch(Exception e){
+            e.printStackTrace();
         }
         throw new Exception("Les relations "+this.nom+" et "+b.nom+" n 'ont aucune colonne en commun");
     }
 
     //join
     public Relation join(Relation b)throws Exception{
+        System.out.println("nididtra join");
+        System.out.println(b.getNom()+" nom de l;autre base");
         int[] commoncol=getCommonCol(b);
+        
         int acol=commoncol[0];
         int bcol=commoncol[1];
 
@@ -274,10 +287,9 @@ public class Relation {
                             break;
                         }
                     }
-                    
                 }
             }
-            
+           
         return new Relation(colnames,rescontent,"a join b");
     }
 

@@ -14,14 +14,14 @@ public class Select extends KeyWord{
         }
         return cols;
     }
-    public Relation execute(Relation res, Execution exec,Vector<String> args) throws Exception{
+    public Relation execute(Object res, Execution exec,Vector<String> args) throws Exception{
         if(args.get(0).compareToIgnoreCase("*")!=0){
             String[] cols=getCols(args);
-            checkSyntaxe(cols, res);
-            res=res.projection(cols);
+            checkSyntaxe(cols, (Relation) res);
+            res=((Relation) res).projection(cols);
         }
-        res.afficher();
-        return res;
+        ((Relation) res).afficher();
+        return (Relation) res;
     }
     public void checkSyntaxe(String[] cols, Relation res) throws Exception{
         for(int i=0;i<cols.length;i++){

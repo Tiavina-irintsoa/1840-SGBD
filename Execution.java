@@ -123,10 +123,9 @@ public class Execution {
         return res;
     }
 
-    public void execute(String sql) throws Exception{
+    public Object execute(String sql) throws Exception{
         String[] mots=setFlexible(sql);
         int locate=0;
-        Relation res=new Relation(null, null, null);
         boolean last=false;
         Vector<KeyWord> kw=new Vector<KeyWord>();
         KeyWord initiateur=new From();
@@ -138,6 +137,7 @@ public class Execution {
             initiateur=initiateur.next();
         }
         int ikw=0;
+        Object res=null;
         while(ikw<kw.size()){
             locate=locate(mots,kw.get(ikw).getIntitule());
             System.out.println(locate+"locate");
@@ -149,12 +149,15 @@ public class Execution {
                 System.out.println("args: "+mots[i]);
             }
             res=kw.get(ikw).execute(res,this,args);
+            
             ikw++;
         }
+        return res;
     }
     public int contains(String nom) {
         for(int i=0;i<listeRelations.length;i++){
             if(nom.compareToIgnoreCase(listeRelations[i].getNom())==0){
+                System.out.println("contains"+nom);
                 return i;
             }
         }
