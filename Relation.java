@@ -356,30 +356,23 @@ public class Relation {
         }
         return new Relation(nomColonnes, resultcontent,"a difference b");
     }
-    public static Vector setObj( Object[] obj ){
+    public static Vector setObj(Object[] obj){
         Vector v = new Vector();
-
-        for ( int i = 0 ; i != obj.length ; i++ ){
-            v.add( obj[i] );
+        for (int i=0;i!=obj.length;i++){
+            v.add(obj[i]);
         }
-
         return v;
     }
-    public static Vector<Vector> toVector( Object[][] obj ){
+    public static Vector<Vector> toVector(Object[][] obj){
         Set<Vector> v = new HashSet<Vector>();
-
         for ( int i = 0 ; i != obj.length ; i++ ){
             v.add( setObj(obj[i]) );
         }
-
         Vector<Vector> valiny = new Vector<Vector>();
-
         Iterator iterator = v.iterator();
-
         while(iterator.hasNext()){
             valiny.add(  (Vector) iterator.next() );
         }
-
         return valiny;
     }
     public static Object[][] toArray( Vector<Vector> v ){

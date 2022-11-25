@@ -10,7 +10,7 @@ public class Where extends KeyWord{
     public Relation condition(String selector,Relation res, String seq, String colonne){
         return res.selection(colonne, seq, selector);
     }
-    public Relation execute(Object res, Execution exec,Vector<String> args) throws Exception{
+    public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
         checkSyntaxe(args);
         Relation r=condition(args.get(1), (Relation) res, args.get(2), args.get(0));
         if(args.size()>=4){

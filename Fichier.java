@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.Vector;
 
-import javax.xml.xpath.XPathConstants;
 
 import java.io.File;
 public class Fichier extends File{
