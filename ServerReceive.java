@@ -23,6 +23,7 @@ public class ServerReceive extends Thread{
                 sql=(String) objis.readObject();
                 System.out.println(sql);
 
+                
                 returnvalue="Retour";
                 objos.writeObject(returnvalue);
             }
