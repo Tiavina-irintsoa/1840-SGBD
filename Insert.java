@@ -8,7 +8,7 @@ import datacontainer.Relation;
 public class Insert extends KeyWord{
     public Insert(){
         super("insert");
-        super.setNext(new From());
+        super.setNext(new Use());
     }
     //insert into nomtable a,b,n
     public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{

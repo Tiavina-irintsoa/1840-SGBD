@@ -58,9 +58,9 @@ public class Fichier extends File{
         }
         bfw.close();
     }
-    public static Vector<String> read(String path,String fichier) throws Exception{
-
-        Scanner sc=new Scanner(new File("data/"+path+"/"+fichier));
+    public Vector<String> read(String fichier) throws Exception{
+        System.out.println("Fichier.read()");
+        Scanner sc=new Scanner(new File(this.path+"/"+fichier));
         Vector<String> v=new Vector<String>();
         // System.out.println("read");
         String nextLine=null;

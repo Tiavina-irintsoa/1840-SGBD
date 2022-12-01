@@ -12,7 +12,6 @@ public class Relation {
     }
     public Vector<Vector<String>> toVector(){
         Vector<Vector<String>> all=new Vector<Vector<String>>();
-
         Vector<String> nomCols=new Vector<String>();
         for(int i=0;i<nomColonnes.length;i++){
             nomCols.add(nomColonnes[i]);
@@ -29,12 +28,13 @@ public class Relation {
         }   
         return all;
     }
-    public Relation(String nomtable) throws Exception{
+    public Relation(String nomtable,String nombdd) throws Exception{
         this.nom=nomtable;
-        Vector<String> filecontent=Fichier.read(nomtable,"donnees");
+        Fichier f=new Fichier("database/"+nombdd+"/"+nomtable);
+        Vector<String> filecontent=f.read("donnees");
         setContent(filecontent);
 
-        filecontent=Fichier.read(nomtable,"nomcolonnes");
+        filecontent=f.read("nomcolonnes");
         setNomColonnes(filecontent);
     }
     public void setNomColonnes(Vector<String> nomcols){
@@ -60,6 +60,7 @@ public class Relation {
         for(int iligne=0;iligne<nblignes;iligne++){
             ligne=filecontent.get(iligne).split("%%");
             for(int icolonne=0;icolonne<nbcolonnes;icolonne++){
+                
                 content[iligne][icolonne]=ligne[icolonne];
             }
         }

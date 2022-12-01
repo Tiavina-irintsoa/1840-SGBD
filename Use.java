@@ -5,9 +5,15 @@ import java.util.Vector;
 public class Use extends KeyWord{
     public Use(){
         super("use");
-        super.setNext(null);
+        super.setNext(new From());
     }
-    // public Relation execute(Object res, Execution exec,Vector<String> args) throws Exception{
-        
-    // }
+    public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
+        try {
+            System.out.println("Use.execute()");
+            exec.setUsed(args.get(0));
+            return "database changed";
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }

@@ -6,30 +6,51 @@ import datacontainer.Relation;
 import keywords.*;
 
 public class Execution {
-    KeyWord current=new From();
+    KeyWord current=new Use();
     Database used;
     Database[] listeDatabases;
+    public void setUsed(String db) throws Exception{
+        this.used=getDatabase(db);
+    }
     public void update() throws Exception{
-        File directory=new File("database/"+used.getNom());
-        File[] files=directory.listFiles();
-        used.setListeRelation(new Relation[files.length]);
-        try {
-            for(int i=0;i<files.length;i++){
-                this.used.setListeRelation(i,new Relation(files[i].getName()));
-            }
-        } 
-        catch (Exception e) {
-            throw e;
-        }
-    }
-    public void setUsed(String db){
-        
-    }
-    public Execution(){
         File directory=new File("database");
         File[] files=directory.listFiles();
         this.listeDatabases=new Database[files.length];
-        
+        try {
+            for(int i=0;i<files.length;i++){
+                System.out.println("base de donnees"+files[i].getName());
+                listeDatabases[i]=new Database(files[i].getName());
+                if(used!=null){
+                    if(listeDatabases[i].getNom().compareTo(used.getNom())==0){
+                        this.used=listeDatabases[i];
+                    }
+                }
+            }
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public Database getDatabase(String nom) throws Exception{
+        for(int i=0;i<listeDatabases.length;i++){
+            if(nom.compareToIgnoreCase(listeDatabases[i].getNom())==0){
+                return listeDatabases[i];
+            }
+        }
+        throw new Exception("base de donnees introuvable");
+    }
+    public Execution() throws Exception{
+        File directory=new File("database");
+        File[] files=directory.listFiles();
+        this.listeDatabases=new Database[files.length];
+        try {
+            for(int i=0;i<files.length;i++){
+                listeDatabases[i]=new Database(files[i].getName());
+            }
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public Database getBdd(){
         return this.used;
@@ -84,8 +105,12 @@ public class Execution {
                 args.add(mots[i]);
                 System.out.println("args: "+mots[i]);
             }
-            res=kw.get(ikw).execute(res,this,args);
-            
+            if(kw.get(ikw).getIntitule().compareToIgnoreCase("drop")!=0 && kw.get(ikw).getIntitule().compareToIgnoreCase("use")!=0 && kw.get(ikw).getIntitule().compareToIgnoreCase("create")!=0){
+                if(this.used==null){
+                    throw new Exception("Aucune base de donnee selectionnee");
+                }
+            }  
+            res=kw.get(ikw).execute(res,this,args);          
             ikw++;
         }
         if(res instanceof Relation){
