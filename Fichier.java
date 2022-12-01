@@ -46,6 +46,19 @@ public class Fichier extends File{
         bfw.newLine();
         bfw.close();
     }
+    public void rewrite(Object[][] values) throws Exception{
+        FileWriter fr=new FileWriter(this.path,false);
+        BufferedWriter bfw=new BufferedWriter(fr);
+        for(int row=0;row<values.length;row++){
+            String toInsert="";
+            for(int col=0;col<values[0].length;col++){
+                toInsert=toInsert+String.valueOf(values[row][col])+"%%";
+            }
+            bfw.write(toInsert);
+            bfw.newLine();
+        }
+        bfw.close();
+    }
     public static Vector<String> read(String path,String fichier) throws Exception{
 
         Scanner sc=new Scanner(new File("data/"+path+"/"+fichier));

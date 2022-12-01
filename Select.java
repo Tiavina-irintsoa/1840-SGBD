@@ -5,7 +5,7 @@ import datacontainer.Relation;
 public class Select extends KeyWord{
     public Select(){
         super("select");
-        super.setNext(null);
+        super.setNext(new Delete());
     }
     public String[] getCols(Vector<String> args){
         String[] cols=args.get(0).split(",");

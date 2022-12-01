@@ -1,4 +1,6 @@
 la grammaire:
+-insensible a la casse sauf pour les donnees
+
 
 projection:
 select * from nom_table 
@@ -18,5 +20,8 @@ insert into nom_table values_col1,values_col2,...
 
 division:
 select * frm nom_table1 division nomtable2 col1 by col2
+
+suprresion 
+delete from nomtable [where ...]
 
 

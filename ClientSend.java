@@ -18,8 +18,8 @@ public class ClientSend extends Thread{
             OutputStream os=client.getOutputStream();
             ObjectOutputStream objos=new ObjectOutputStream(os);
             while(true){
+                System.out.print(">> ");
                 sql=sc.nextLine();
-                System.out.println("sql: "+sql);
                 objos.writeObject(sql);
             }
         } catch (Exception e) {

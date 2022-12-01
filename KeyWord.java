@@ -34,5 +34,4 @@ public class KeyWord {
         }
         return mots.length;
     }
-    
 }

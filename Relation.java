@@ -460,7 +460,9 @@ public class Relation {
         return new Relation(colname, resultcontent,"a produit cartesien b");
     }
     
-
+    public Object[][] getContent() {
+        return content;
+    }
     //selection
     public Relation selection(String nomCol, String seq, String compare){
         System.out.println("niditra");
@@ -481,7 +483,7 @@ public class Relation {
                 }
             }
         }
-        return new Relation(nomColonnes,resultcontent,"selection a");
+        return new Relation(nomColonnes,resultcontent,this.nom);
     }
 
     //afficher

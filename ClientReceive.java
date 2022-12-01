@@ -23,7 +23,7 @@ public class ClientReceive extends Thread{
                     }
                     System.out.println("");
                     for(int i=1;i<v.size();i++){
-                        for(int j=0;v.get(i).size();j++){
+                        for(int j=0;j<v.get(i).size();j++){
                             System.out.print("| "+v.get(i).get(j)+" | ");
                         }
                         System.out.println("");
