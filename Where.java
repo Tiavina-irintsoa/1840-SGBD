@@ -1,6 +1,7 @@
 package keywords;
+import process.*;
 import java.util.Vector;
-import datacontainer.Execution;
+
 import datacontainer.Relation;
 public class Where extends KeyWord{
     public Where(){
@@ -19,10 +20,6 @@ public class Where extends KeyWord{
                 Relation r1=condition(args.get(next+2),(Relation) res, args.get(next+3), args.get(next+1));
                 System.out.println("R1");
                 r1.afficher();
-
-                System.out.println("res");
-                ((Relation) res).afficher();
-                System.out.println("next : "+ args.get(next));
                 if(args.get(next).compareToIgnoreCase("or")==0){
                     r=r.union(r1);
                 }

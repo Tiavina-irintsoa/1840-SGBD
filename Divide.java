@@ -1,6 +1,7 @@
 package keywords;
+import process.*;
 import java.util.Vector;
-import datacontainer.Execution;
+
 import datacontainer.Relation;
 public class Divide extends KeyWord{
     public Divide(){
@@ -15,21 +16,21 @@ public class Divide extends KeyWord{
             String colonne1=args.get(1);
             String colonne2=args.get(3);
             String nombdd=args.get(0);
-            Relation r=((Relation) res).division(exec.getRelation(exec.contains(nombdd)), colonne1, colonne2);
+            Relation r=((Relation) res).division(exec.getBdd().getRelation(exec.getBdd().contains(nombdd)), colonne1, colonne2);
             return (Relation) res;
         } catch (Exception e) {
             throw e;
         }
     }
     public void checkSyntaxe(Vector<String> args, Execution exec, Object res) throws Exception{
-        int relation=exec.contains(args.get(0));
+        int relation=exec.getBdd().contains(args.get(0));
         if(relation==-1){
             throw new Exception("Relation inexistante");
         }
-        if(exec.getRelation(relation).isColonne(args.get(1))==false){
+        if(exec.getBdd().getRelation(relation).isColonne(args.get(1))==false){
             throw new Exception("Cette colonne n'existe pas");
         }
-        if(exec.getRelation(relation).isColonne(args.get(3))==false){
+        if(exec.getBdd().getRelation(relation).isColonne(args.get(3))==false){
             throw new Exception("Cette colonne n'existe pas");
         }
         if(args.get(2).compareToIgnoreCase("by")==0){

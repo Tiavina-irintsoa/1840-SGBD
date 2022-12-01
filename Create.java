@@ -1,6 +1,7 @@
 package keywords;
+import process.*;
 import java.util.Vector;
-import datacontainer.Execution;
+
 import datacontainer.Fichier;
 
 import datacontainer.Relation;
@@ -14,12 +15,12 @@ public class Create extends KeyWord{
     public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
         try {
             checkSyntaxe(args);
-            Fichier f=new Fichier(exec.getBdd()+"/"+args.get(1));
+            Fichier f=new Fichier("database"+exec.getBdd().getNom()+"/"+args.get(1));
             String[] nomColonnes=args.get(3).split(",");
             f.creerTable(nomColonnes);
             return "Table "+args.get(1)+" creee";
         }
-        catch (Exception e) {
+        catch (Exception e){
             throw e;
         }
     }

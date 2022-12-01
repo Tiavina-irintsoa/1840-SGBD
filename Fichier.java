@@ -36,9 +36,8 @@ public class Fichier extends File{
             throw new Exception("Table existante");
         }
     }
-    public static void insert(String[] values,String nomTable) throws Exception{
-        Fichier f=new Fichier("data/"+nomTable+"/donnees");
-        FileWriter fr=new FileWriter(f,true);
+    public void insert(String[] values) throws Exception{
+        FileWriter fr=new FileWriter(this,true);
         BufferedWriter bfw=new BufferedWriter(fr);
         for(int i=0;i<values.length;i++){
             bfw.write(values[i]+"%%");

@@ -1,31 +1,39 @@
-package datacontainer;
+package process;
 import java.io.File;
+import datacontainer.*;
 import java.util.Vector;
 import datacontainer.Relation;
 import keywords.*;
 
 public class Execution {
-    Relation[] listeRelations;
     KeyWord current=new From();
-    String bdd="data";
-
-    public String getBdd(){
-        return bdd;
-    }
-       
-    public Execution() throws Exception{
-        File directory=new File(bdd);
+    Database used;
+    Database[] listeDatabases;
+    public void update() throws Exception{
+        File directory=new File("database/"+used.getNom());
         File[] files=directory.listFiles();
-        this.listeRelations=new Relation[files.length];
+        used.setListeRelation(new Relation[files.length]);
         try {
-            for(int i=0;i<this.listeRelations.length;i++){
-                this.listeRelations[i]=new Relation(files[i].getName());
+            for(int i=0;i<files.length;i++){
+                this.used.setListeRelation(i,new Relation(files[i].getName()));
             }
         } 
         catch (Exception e) {
             throw e;
-       }
-    }   
+        }
+    }
+    public void setUsed(String db){
+        
+    }
+    public Execution(){
+        File directory=new File("database");
+        File[] files=directory.listFiles();
+        this.listeDatabases=new Database[files.length];
+        
+    }
+    public Database getBdd(){
+        return this.used;
+    }
     public int locate(String[] sql,String recherche){
         for(int i=0;i<sql.length;i++){
             if(recherche.compareToIgnoreCase(sql[i])==0){
@@ -84,17 +92,5 @@ public class Execution {
             return ((Relation) res).toVector();
         }
         return res;
-    }
-    public int contains(String nom) {
-        for(int i=0;i<listeRelations.length;i++){
-            if(nom.compareToIgnoreCase(listeRelations[i].getNom())==0){
-                System.out.println("contains"+nom);
-                return i;
-            }
-        }
-        return -1;
-    }
-    public Relation getRelation(int index){
-        return listeRelations[index];
     }
 }
