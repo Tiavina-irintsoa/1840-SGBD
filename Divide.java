@@ -5,7 +5,7 @@ import datacontainer.Relation;
 public class Divide extends KeyWord{
     public Divide(){
         super("divide");
-        super.setNext(new Select());
+        super.setNext(new Now());
     }
 
     //select rel1 divide rel2 col1 by col2
