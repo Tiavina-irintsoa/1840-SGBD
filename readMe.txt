@@ -1,6 +1,17 @@
 la grammaire:
 -insensible a la casse sauf pour les donnees
 
+selectionner une base de donnees:
+use database nom_bdd
+
+creer une base de donnees:
+create database nom_bdd
+
+supprimer une base de donnees:
+drop database nom_bdd
+
+supprimer table:
+drop table nom_table
 
 projection:
 select * from nom_table 
