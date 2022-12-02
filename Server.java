@@ -10,8 +10,7 @@ public class Server {
         final ServerSocket serverSocket;
         final OutputStream os;
         final InputStream is;
-
-        int port = 1000;
+        int port=1000;
         try {
             serverSocket = new ServerSocket(port);
             System.out.println("En attende de clients...");
