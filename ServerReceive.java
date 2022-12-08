@@ -23,9 +23,11 @@ public class ServerReceive extends Thread{
             while(true){
                 System.out.print("new Request:");
                 sql=(String) objis.readObject();
-                System.out.print(sql);
+                System.out.println(sql);
                 if(sql.compareToIgnoreCase("bye")==0){
+                    System.out.println("Un client a quitte");
                     client.close();
+                    break;
                 }
                 try {
                     exec.update();

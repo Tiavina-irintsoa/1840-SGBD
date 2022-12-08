@@ -38,7 +38,6 @@ public class ClientReceive extends Thread{
                 System.out.println("");
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

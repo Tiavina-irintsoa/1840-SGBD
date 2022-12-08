@@ -17,13 +17,17 @@ public class ClientSend extends Thread{
         try {
             OutputStream os=client.getOutputStream();
             ObjectOutputStream objos=new ObjectOutputStream(os);
-            while(true){
+            boolean connected=true;
+            while(connected){
                 System.out.print(">> ");
                 sql=sc.nextLine();
                 objos.writeObject(sql);
+                if(sql.compareToIgnoreCase("bye")==0){
+                    client.close();
+                    connected=false;
+                }
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
