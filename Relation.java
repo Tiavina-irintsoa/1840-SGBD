@@ -39,6 +39,18 @@ public class Relation {
         }   
         return all;
     }
+    public Relation update(Relation condition,String colonne,String newValue) throws Exception{
+        int col=getColIndex(colonne);
+        for(int i=0;i<this.content.length;i++){
+            for(int j=0;j<condition.content.length;j++){
+                if(Arrays.equals(content[i], condition.content[j])==true){
+                    content[i][col]=newValue;
+                    break;
+                }
+            }
+        }
+        return new Relation(this.nomColonnes,content,nom);
+    }
     public Relation(String nomtable,String nombdd) throws Exception{
         this.nom=nomtable;
         Fichier f=new Fichier("database/"+nombdd+"/"+nomtable);

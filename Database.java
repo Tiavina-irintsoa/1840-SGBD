@@ -24,6 +24,9 @@ public class Database {
     public Relation getRelation(int index){
         return listeRelations[index];
     }
+    public Relation[] getListeRelations() {
+        return listeRelations;
+    }
     public void setListeRelation(Relation[] nouveau){
         this.listeRelations=nouveau;
     }
