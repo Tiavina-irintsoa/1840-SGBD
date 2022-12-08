@@ -6,7 +6,7 @@ import datacontainer.Relation;
 public class Join extends KeyWord{
     public Join(){
         super("join");
-        super.setNext(new Update());
+        super.setNext(new Where());
     }
     public Object execute(Object res, Execution exec,Vector<String> args){
         try {

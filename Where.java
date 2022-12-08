@@ -6,7 +6,7 @@ import datacontainer.Relation;
 public class Where extends KeyWord{
     public Where(){
         super("where");
-        super.setNext(new Join());
+        super.setNext(new Update());
     }
     public Relation condition(String selector,Relation res, String seq, String colonne){
         return res.selection(colonne, seq, selector);

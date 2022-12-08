@@ -19,7 +19,7 @@ public class ClientSend extends Thread{
             ObjectOutputStream objos=new ObjectOutputStream(os);
             boolean connected=true;
             while(connected){
-                System.out.print(">> ");
+                // System.out.print(">> ");
                 sql=sc.nextLine();
                 objos.writeObject(sql);
                 if(sql.compareToIgnoreCase("bye")==0){

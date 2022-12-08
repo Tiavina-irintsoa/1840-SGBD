@@ -8,7 +8,7 @@ import datacontainer.Relation;
 public class From extends KeyWord{
     public From(){
         super("from");
-        super.setNext(new Where());
+        super.setNext(new Join());
     }
     public Relation execute(Object res, Execution exec,Vector<String> args) throws Exception{
         try{

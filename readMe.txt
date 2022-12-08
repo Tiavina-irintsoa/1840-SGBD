@@ -23,6 +23,8 @@ select * from nom_table where col1 = ... [or col1 = ...] [and col2 = ...]
 
 join:
 select * from nom_table join nom_table2
+select * from nom_table join nom_table2 join nom_table3
+
 
 creation de table:
 create table nomtable with col1,col2,col3
