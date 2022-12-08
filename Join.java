@@ -13,13 +13,13 @@ public class Join extends KeyWord{
             checkSyntaxe(args, exec);
             String nombdd=args.get(0);
             Relation tojoin=exec.getBdd().getRelation(exec.getBdd().contains(nombdd));
-            Relation r=((Relation) res).join(tojoin);
+            Relation r=tojoin.join(((Relation) res));
             if(args.size()>1){
                 int next=1;
                 while(args.get(next).compareToIgnoreCase("join")==0){
                     nombdd=args.get(next+1);
                     tojoin=exec.getBdd().getRelation(exec.getBdd().contains(nombdd));
-                    r=r.join(tojoin);
+                    r=tojoin.join(r);
                     next=next+2;
                     if(next>=args.size()){
                         break;
