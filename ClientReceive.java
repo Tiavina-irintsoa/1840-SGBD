@@ -2,6 +2,7 @@ package run;
 
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import datacontainer.Relation;
@@ -16,6 +17,11 @@ public class ClientReceive extends Thread{
             ObjectInputStream objis=new ObjectInputStream(client.getInputStream());
             while(true){
                 Object returnvalue=objis.readObject();
+                if(returnvalue instanceof ArrayList){
+                    for(int i=0;i<((ArrayList<String>)returnvalue).size();i++){
+                        System.out.println(((ArrayList<String>)returnvalue).get(i));
+                    }   
+                }
                 if(returnvalue instanceof Vector){
                     Vector<Vector<String>> v=(Vector<Vector<String>>) returnvalue;
                     for(int i=0;i<v.get(0).size();i++){

@@ -25,6 +25,9 @@ public class Select extends KeyWord{
         return (Relation) res;
     }
     public void checkSyntaxe(String[] cols, Relation res) throws Exception{
+        if(exec.getBdd()==null){
+            throw new Exception("Aucune base de donnees selectionnee");
+        }
         for(int i=0;i<cols.length;i++){
             if(res.isColonne(cols[i])==false){
                 throw new Exception("La colonne "+cols[i]+" n'existe pas dans la relation "+res.getNom());

@@ -1,6 +1,7 @@
 package process;
 import java.io.File;
 import datacontainer.*;
+import java.util.ArrayList;
 import java.util.Vector;
 import datacontainer.Relation;
 import keywords.*;
@@ -88,7 +89,13 @@ public class Execution {
         }
         return res;
     }
-
+    public ArrayList<String> getDatabaseName(){
+        ArrayList<String> res=new ArrayList<String>();
+        for(int i=0;i<listeDatabases.length;i++){
+            res.add(listeDatabases[i].getNom());
+        }
+        return res;
+    }
     public Object execute(String sql) throws Exception{
         String[] mots=setFlexible(sql);
         int locate=0;
@@ -116,11 +123,6 @@ public class Execution {
             for(int i=locate+1;i<nearest;i++){
                 args.add(mots[i]);
                 System.out.println("args: "+mots[i]);
-            }
-            if(kw.get(ikw).getIntitule().compareToIgnoreCase("drop")!=0 && kw.get(ikw).getIntitule().compareToIgnoreCase("use")!=0 && kw.get(ikw).getIntitule().compareToIgnoreCase("create")!=0){
-                if(this.used==null){
-                    throw new Exception("Aucune base de donnee selectionnee");
-                }
             }  
             res=kw.get(ikw).execute(res,this,args);          
             ikw++;

@@ -13,6 +13,13 @@ public class Relation {
     public String[] getNomColonnes() {
         return nomColonnes;
     }
+    public ArrayList<String> getListeColonnes(){
+        ArrayList<String> res=new ArrayList<String>();
+        for(int i=0;i<nomColonnes.length;i++){
+            res.add(nomColonnes[i]);
+        }
+        return res;
+    }
     public Vector<Vector<String>> toVector(){
         Vector<Vector<String>> all=new Vector<Vector<String>>();
         Vector<String> nomCols=new Vector<String>();

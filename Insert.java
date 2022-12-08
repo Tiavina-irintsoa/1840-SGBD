@@ -26,6 +26,9 @@ public class Insert extends KeyWord{
         if(args.get(0).compareToIgnoreCase("into")!=0){
             throw new Exception("Syntax Error");
         }
+        if(exec.getBdd()==null){
+            throw new Exception("Aucune base de donnees selectionnee");
+        }
         if(exec.getBdd().contains(args.get(1))==-1){
             throw new Exception("table inexistante");
         }

@@ -35,6 +35,9 @@ public class Where extends KeyWord{
         return r;
     }
     public void checkSyntaxe(Vector<String> args)throws Exception{
+        if(exec.getBdd()==null){
+            throw new Exception("Aucune base de donnees selectionnees");
+        }
         if(args.size()<3){
             throw new Exception("Condition incomplete");
         }

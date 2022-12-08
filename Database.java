@@ -1,5 +1,6 @@
 package datacontainer;
 import java.io.File;
+import java.util.ArrayList;
 
 public class Database {
     Relation[] listeRelations;
@@ -26,6 +27,13 @@ public class Database {
     }
     public Relation[] getListeRelations() {
         return listeRelations;
+    }
+    public ArrayList<String> getTableName(){
+        ArrayList<String> res=new ArrayList<String>();
+        for(int i=0;i<listeRelations.length;i++){
+            res.add(listeRelations[i].getNom());
+        }
+        return res;
     }
     public void setListeRelation(Relation[] nouveau){
         this.listeRelations=nouveau;

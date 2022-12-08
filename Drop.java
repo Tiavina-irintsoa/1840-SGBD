@@ -25,19 +25,21 @@ public class Drop extends KeyWord{
         if(args.size()!=2){
             throw new Exception("Syntaxe error");
         }
-        if(args.get(0).compareToIgnoreCase("table")==0 && args.get(0).compareToIgnoreCase("database")==0){
+        
+        if(args.get(0).compareToIgnoreCase("table")!=0 && args.get(0).compareToIgnoreCase("database")!=0){
             throw new Exception("Syntaxe error");
         }
         if (args.get(0).compareToIgnoreCase("database")==0) {
-            // if(exec.getBdd()!=null){
-            //     if(args.get(1).compareToIgnoreCase(exec.getBdd().getNom())==0){
-            //         throw new Exception("Vous etes encore connecte a cette base de donnees");
-            //     }
-            // }
             if(exec.isDatabase(args.get(1))==-1){
                 throw new Exception("Base de donnnees introuvable");
             }
         }
+        if(args.get(0).compareToIgnoreCase("table")==0){
+            if(exec.getBdd()==null){
+                throw new Exception("Aucune base de donnees selectionnee");
+            }
+        }
+        
 
     }
 }

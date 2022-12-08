@@ -18,6 +18,9 @@ public class Update extends KeyWord{
         return "Mis a jour";
     }
     public void checkSyntaxe(Vector<String> args,Relation res) throws Exception{
+        if(exec.getBdd()==null){
+            throw new Exception("Aucune base de donnees selectionnees");
+        }
         if(args.size()!=4){
             throw new Exception("Syntax Error");
         }

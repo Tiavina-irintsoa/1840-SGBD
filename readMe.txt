@@ -1,6 +1,14 @@
 la grammaire:
 -insensible a la casse sauf pour les donnees
 
+voir la liste des basse de donnees:
+>>show databases
+
+voir la liste des tables:
+>>show tables
+
+decrire une table
+>>show details from nom_table
 
 selectionner une base de donnees:
 >>use database nom_bdd

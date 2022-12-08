@@ -23,6 +23,9 @@ public class Divide extends KeyWord{
         }
     }
     public void checkSyntaxe(Vector<String> args, Execution exec, Object res) throws Exception{
+        if(exec.getBdd()==null){
+            throw new Exception("Aucune base de donnees selectionnee");
+        }
         int relation=exec.getBdd().contains(args.get(0));
         if(relation==-1){
             throw new Exception("Relation inexistante");

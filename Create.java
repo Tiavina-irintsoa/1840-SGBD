@@ -10,7 +10,6 @@ public class Create extends KeyWord{
         super("create");
         super.setNext(new Drop());
     }
-
     //create table ... with x,y,z
     public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
         try {
@@ -30,6 +29,9 @@ public class Create extends KeyWord{
         }
     }
     public void checkSyntaxe(Vector<String> args,Execution exec)throws Exception{
+        if(exec.getBdd()==null){
+            throw new Exception("Aucune base de donnees selectionnee");
+        }
         if(args.size()<2){
             throw new Exception("Syntax error");
         }

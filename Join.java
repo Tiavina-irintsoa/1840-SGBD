@@ -35,6 +35,9 @@ public class Join extends KeyWord{
     }
     public void checkSyntaxe(Vector<String> args, Execution exec) throws Exception{
         System.out.println("Join.checkSyntaxe()");
+        if(exec.getBdd()==null){
+            throw new Exception("Aucune base de donnees selectionnee");
+        }
         if(exec.getBdd().contains(args.get(0))==-1){
             throw new Exception("Relation inexistante");
         }
