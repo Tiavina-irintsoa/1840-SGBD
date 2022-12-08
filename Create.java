@@ -30,7 +30,9 @@ public class Create extends KeyWord{
         }
     }
     public void checkSyntaxe(Vector<String> args,Execution exec)throws Exception{
-        
+        if(args.size()<2){
+            throw new Exception("Syntax error");
+        }
         if(args.get(0).compareToIgnoreCase("table")!=0 && args.get(0).compareToIgnoreCase("database")!=0){
             throw new Exception("Veuillez preciser ce que vous allez creer");
         }
@@ -44,8 +46,14 @@ public class Create extends KeyWord{
             if(args.get(2).compareToIgnoreCase("with")!=0){
                 throw new Exception("Veuillez preciser les nom de colonnes");
             }
-            
-            
+            String[] nomColonnes=args.get(3).split(",");
+            for(int i=0;i<nomColonnes.length;i++){
+                for(int other=i+1;other<nomColonnes.length;other++){
+                    if(nomColonnes[i].compareToIgnoreCase(nomColonnes[other])==0){
+                        throw new Exception("nom de colonnes redondant");
+                    }
+                }
+            }
         }
         
     }

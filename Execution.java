@@ -12,6 +12,14 @@ public class Execution {
     public void setUsed(String db) throws Exception{
         this.used=getDatabase(db);
     }
+    public int isDatabase(String nom){
+        for(int i=0;i<listeDatabases.length;i++){
+            if(nom.compareToIgnoreCase(listeDatabases[i].getNom())==0){
+                return i;
+            }
+        }
+        return -1;
+    }
     public void update() throws Exception{
         File directory=new File("database");
         File[] files=directory.listFiles();
@@ -72,6 +80,7 @@ public class Execution {
                 vrais.add(mots[i].trim());
             }
         }
+
         String[] res=new String[vrais.size()];
         for(int i=0;i<vrais.size();i++){
             System.out.println("res[i] "+vrais.get(i));
@@ -92,6 +101,9 @@ public class Execution {
                 kw.add(initiateur);
             }
             initiateur=initiateur.next();
+        }
+        if(kw.size()==0){
+            throw new Exception("commande inconnue");
         }
         int ikw=0;
         Object res=null;

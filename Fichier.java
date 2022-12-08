@@ -58,6 +58,18 @@ public class Fichier extends File{
         }
         bfw.close();
     }
+    public void drop() throws Exception{
+        File[] inside=this.listFiles();
+        for(int i=0;i<inside.length;i++){
+            if(inside[i].isDirectory()){
+                Fichier directory=new Fichier(inside[i].getPath());
+                directory.drop();
+            }
+            inside[i].delete();
+            System.out.println("delete");
+        }
+        this.delete();
+    }
     public Vector<String> read(String fichier) throws Exception{
         System.out.println("Fichier.read()");
         Scanner sc=new Scanner(new File(this.path+"/"+fichier));

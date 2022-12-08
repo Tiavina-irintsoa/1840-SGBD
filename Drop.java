@@ -1,6 +1,9 @@
 package keywords;
 import datacontainer.*;
 import process.*;
+import process.Execution;
+
+import java.io.File;
 import java.util.Vector;
 public class Drop extends KeyWord{
     public Drop(){
@@ -11,11 +14,11 @@ public class Drop extends KeyWord{
         checkSyntaxe(args,exec);
         if(args.get(0).compareToIgnoreCase("table")==0){
             Fichier f=new Fichier("database/"+exec.getBdd().getNom()+"/"+args.get(1));
-            f.delete();
+            f.drop();
             return "table supprimee";
         }
         Fichier f=new Fichier("database/"+args.get(1));
-        f.delete();
+        f.drop();
         return "base de donnees supprimees";
     }
     public void checkSyntaxe(Vector<String> args, Execution exec) throws Exception{
@@ -26,11 +29,15 @@ public class Drop extends KeyWord{
             throw new Exception("Syntaxe error");
         }
         if (args.get(0).compareToIgnoreCase("database")==0) {
-            if(exec.getBdd()!=null){
-                if(args.get(1).compareToIgnoreCase(exec.getBdd().getNom())==0){
-                    throw new Exception("Vous etes encore connecte a cette base de donnees");
-                }
+            // if(exec.getBdd()!=null){
+            //     if(args.get(1).compareToIgnoreCase(exec.getBdd().getNom())==0){
+            //         throw new Exception("Vous etes encore connecte a cette base de donnees");
+            //     }
+            // }
+            if(exec.isDatabase(args.get(1))==-1){
+                throw new Exception("Base de donnnees introuvable");
             }
         }
+
     }
 }

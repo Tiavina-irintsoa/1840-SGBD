@@ -1,6 +1,7 @@
 la grammaire:
 -insensible a la casse sauf pour les donnees
 
+
 selectionner une base de donnees:
 use database nom_bdd
 
@@ -38,6 +39,7 @@ delete from nomtable [where ...]
 current time
 now()
 
+update set nom = haha from nom_table [where ...]
 
 
 

@@ -10,21 +10,32 @@ public class Relation {
         this.nomColonnes=nomCol;
         this.nom=nom;
     }
+    public String[] getNomColonnes() {
+        return nomColonnes;
+    }
     public Vector<Vector<String>> toVector(){
         Vector<Vector<String>> all=new Vector<Vector<String>>();
         Vector<String> nomCols=new Vector<String>();
         for(int i=0;i<nomColonnes.length;i++){
             nomCols.add(nomColonnes[i]);
         }
+        int inull;
         Vector v;
         all.add(nomCols);
         for(int row=0;row<content.length;row++){
+            inull=0;
             v=new Vector<String>();
             for(int col=0;col<content[row].length;col++){
                 System.out.println((String) content[row][col]);
                 v.add((String) content[row][col]);
+                if(content[row][col]==null){
+                    inull++;
+                }
             }
-            all.add(v);
+            if(inull<nomColonnes.length){
+                System.out.println("inull<nomColonnes.length");
+                all.add(v);
+            }
         }   
         return all;
     }
