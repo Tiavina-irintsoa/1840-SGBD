@@ -18,10 +18,11 @@ public class ClientSend extends Thread{
             OutputStream os=client.getOutputStream();
             ObjectOutputStream objos=new ObjectOutputStream(os);
             boolean connected=true;
+            System.out.print("sql> ");
             while(connected){
-                // System.out.print(">> ");
                 sql=sc.nextLine();
                 objos.writeObject(sql);
+                //si le client quitte
                 if(sql.compareToIgnoreCase("bye")==0){
                     client.close();
                     connected=false;

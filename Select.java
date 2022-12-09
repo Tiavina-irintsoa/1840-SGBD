@@ -16,15 +16,15 @@ public class Select extends KeyWord{
         return cols;
     }
     public Relation execute(Object res, Execution exec,Vector<String> args) throws Exception{
+        
         if(args.get(0).compareToIgnoreCase("*")!=0){
             String[] cols=getCols(args);
-            checkSyntaxe(cols, (Relation) res);
+            checkSyntaxe(cols, (Relation) res,exec);
             res=((Relation) res).projection(cols);
         }
-        ((Relation) res).afficher();
         return (Relation) res;
     }
-    public void checkSyntaxe(String[] cols, Relation res) throws Exception{
+    public void checkSyntaxe(String[] cols, Relation res, Execution exec) throws Exception{
         if(exec.getBdd()==null){
             throw new Exception("Aucune base de donnees selectionnee");
         }

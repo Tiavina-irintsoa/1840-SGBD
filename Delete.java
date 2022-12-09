@@ -19,7 +19,7 @@ public class Delete extends KeyWord{
         f.rewrite(nouveau.getContent());
         return "Suppresion effectue";
     }
-    public void checkSyntaxe(Execution exec ){
+    public void checkSyntaxe(Execution exec ) throws Exception{
         if(exec.getBdd()==null){
             throw new Exception("Aucune base de donnees selectionnee");
         }

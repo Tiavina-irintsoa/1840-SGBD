@@ -12,9 +12,13 @@ public class Insert extends KeyWord{
     }
     //insert into nomtable a,b,n
     public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
-        checkSyntaxe(args, exec);
+        checkSyntaxe(args, exec, (Relation) res);
         String[] values=args.get(2).split(",");
         Relation r=exec.getBdd().getRelation(exec.getBdd().contains(args.get(1)));
+        
+        if(values.length<r.getNomColonnes().length){
+            throw new Exception("Nombre de valeurs insuffisantes");
+        }
         if(values.length>r.getNomColonnes().length){
             throw new Exception("Exces de valeurs a inserer");
         }
@@ -22,7 +26,7 @@ public class Insert extends KeyWord{
         f.insert(values);
         return "Donnees inserees";
     }
-    public void checkSyntaxe(Vector<String> args, Execution exec)throws Exception{
+    public void checkSyntaxe(Vector<String> args, Execution exec, Relation res)throws Exception{
         if(args.get(0).compareToIgnoreCase("into")!=0){
             throw new Exception("Syntax Error");
         }
@@ -32,5 +36,6 @@ public class Insert extends KeyWord{
         if(exec.getBdd().contains(args.get(1))==-1){
             throw new Exception("table inexistante");
         }
+        
     }
 }

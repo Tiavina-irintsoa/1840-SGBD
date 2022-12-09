@@ -39,7 +39,7 @@ public class Relation {
                     inull++;
                 }
             }
-            if(inull<nomColonnes.length){
+            if(inull==nomColonnes.length-1){
                 System.out.println("inull<nomColonnes.length");
                 all.add(v);
             }

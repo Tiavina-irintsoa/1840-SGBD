@@ -8,7 +8,7 @@ public class Update extends KeyWord{
         super.setNext(new Divide());
     }
     public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
-        checkSyntaxe(args, (Relation) res);
+        checkSyntaxe(args, (Relation) res,exec);
         Relation condition=(Relation) res;
         int index=exec.getBdd().contains(condition.getNom());
         Relation original=exec.getBdd().getRelation(index);
@@ -17,7 +17,7 @@ public class Update extends KeyWord{
         f.rewrite(nouvelle.getContent());
         return "Mis a jour";
     }
-    public void checkSyntaxe(Vector<String> args,Relation res) throws Exception{
+    public void checkSyntaxe(Vector<String> args,Relation res, Execution exec) throws Exception{
         if(exec.getBdd()==null){
             throw new Exception("Aucune base de donnees selectionnees");
         }

@@ -17,11 +17,13 @@ public class ClientReceive extends Thread{
             ObjectInputStream objis=new ObjectInputStream(client.getInputStream());
             while(true){
                 Object returnvalue=objis.readObject();
+                //si arraylist
                 if(returnvalue instanceof ArrayList){
                     for(int i=0;i<((ArrayList<String>)returnvalue).size();i++){
                         System.out.println(((ArrayList<String>)returnvalue).get(i));
                     }   
                 }
+                //si vector
                 if(returnvalue instanceof Vector){
                     Vector<Vector<String>> v=(Vector<Vector<String>>) returnvalue;
                     for(int i=0;i<v.get(0).size();i++){
@@ -35,13 +37,17 @@ public class ClientReceive extends Thread{
                         System.out.println("");
                     }
                 }
+                //si exception
                 if(returnvalue instanceof Exception){
                     System.out.println(((Exception) returnvalue).getMessage());
                 }
+
+                //si string
                 if(returnvalue instanceof String){
                     System.out.println((String) returnvalue);
                 }
                 System.out.println("");
+                System.out.print("sql> ");
             }
         } catch (Exception e) {
         }

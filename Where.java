@@ -12,7 +12,7 @@ public class Where extends KeyWord{
         return res.selection(colonne, seq, selector);
     }
     public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
-        checkSyntaxe(args);
+        checkSyntaxe(args,exec);
         Relation r=condition(args.get(1), (Relation) res, args.get(2), args.get(0));
         if(args.size()>=4){
             int next=3;
@@ -34,7 +34,7 @@ public class Where extends KeyWord{
         }
         return r;
     }
-    public void checkSyntaxe(Vector<String> args)throws Exception{
+    public void checkSyntaxe(Vector<String> args,Execution exec)throws Exception{
         if(exec.getBdd()==null){
             throw new Exception("Aucune base de donnees selectionnees");
         }

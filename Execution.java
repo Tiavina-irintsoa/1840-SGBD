@@ -13,6 +13,8 @@ public class Execution {
     public void setUsed(String db) throws Exception{
         this.used=getDatabase(db);
     }
+
+    //pour savoir si l'argument nom est une bdd
     public int isDatabase(String nom){
         for(int i=0;i<listeDatabases.length;i++){
             if(nom.compareToIgnoreCase(listeDatabases[i].getNom())==0){
@@ -21,6 +23,7 @@ public class Execution {
         }
         return -1;
     }
+    //mise a jour a chaque requete
     public void update() throws Exception{
         File directory=new File("database");
         File[] files=directory.listFiles();
@@ -64,6 +67,7 @@ public class Execution {
     public Database getBdd(){
         return this.used;
     }
+    //situer un mot dans la requete 
     public int locate(String[] sql,String recherche){
         for(int i=0;i<sql.length;i++){
             if(recherche.compareToIgnoreCase(sql[i])==0){
@@ -72,6 +76,8 @@ public class Execution {
         }
         return -1;
     }
+
+    //enlever les espaces du sql
     public String[] setFlexible(String sql){
         String[] mots=sql.split(" ");
         Vector<String> vrais=new Vector<String>();
@@ -89,6 +95,7 @@ public class Execution {
         }
         return res;
     }
+    //liste des base de donnees
     public ArrayList<String> getDatabaseName(){
         ArrayList<String> res=new ArrayList<String>();
         for(int i=0;i<listeDatabases.length;i++){
@@ -96,6 +103,8 @@ public class Execution {
         }
         return res;
     }
+
+    //executer la requete
     public Object execute(String sql) throws Exception{
         String[] mots=setFlexible(sql);
         int locate=0;
@@ -116,10 +125,8 @@ public class Execution {
         Object res=null;
         while(ikw<kw.size()){
             locate=locate(mots,kw.get(ikw).getIntitule());
-            System.out.println(locate+"locate");
             Vector<String> args=new Vector<String>();
             int nearest=kw.get(ikw).nearest(mots,kw,locate,kw.get(ikw).getIntitule());
-            System.out.println("nearest"+nearest);
             for(int i=locate+1;i<nearest;i++){
                 args.add(mots[i]);
                 System.out.println("args: "+mots[i]);

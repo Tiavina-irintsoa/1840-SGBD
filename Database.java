@@ -12,6 +12,8 @@ public class Database {
     public void setListeRelation(int index, Relation r){
         this.listeRelations[index]=r;
     }
+
+    //pour savoir si l'argument nom est une table dans cette bdd
     public int contains(String nom) {
         System.out.println("length "+ listeRelations.length);
         for(int i=0;i<listeRelations.length;i++){
@@ -28,6 +30,8 @@ public class Database {
     public Relation[] getListeRelations() {
         return listeRelations;
     }
+
+    // la liste des tables
     public ArrayList<String> getTableName(){
         ArrayList<String> res=new ArrayList<String>();
         for(int i=0;i<listeRelations.length;i++){
@@ -46,7 +50,6 @@ public class Database {
         this.listeRelations= new Relation[files.length];
         try {
             for(int i=0;i<files.length;i++){
-                System.out.println("listtable: "+files[i].getName());
                 setListeRelation(i,new Relation(files[i].getName(),nom));
             }
         } 

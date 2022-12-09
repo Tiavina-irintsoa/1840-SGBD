@@ -74,13 +74,10 @@ public class Fichier extends File{
         System.out.println("Fichier.read()");
         Scanner sc=new Scanner(new File(this.path+"/"+fichier));
         Vector<String> v=new Vector<String>();
-        // System.out.println("read");
         String nextLine=null;
         while(sc.hasNextLine()==true){
-            // System.out.println("in")
             nextLine=sc.nextLine();
             v.add(nextLine);
-            // System.out.println(nextLine);
         }
         sc.close();
         return v;

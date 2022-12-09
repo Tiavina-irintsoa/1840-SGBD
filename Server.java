@@ -16,6 +16,7 @@ public class Server {
             System.out.println("En attende de clients...");
             int iduser=1;
             while(true){
+                System.out.println("Attente");
                 Socket client =  serverSocket.accept();
                 try {
                     User user=new User(iduser);
