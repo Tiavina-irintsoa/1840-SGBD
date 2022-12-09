@@ -1,5 +1,8 @@
 Changer de hote: client.java
 
+pour demarrer le serveur: serveur.bat
+pour demarrer un client: client.bat
+
 la grammaire:
 -insensible a la casse sauf pour les donnees
 
@@ -48,16 +51,20 @@ exemple: select * from etudiant where nom like Rak and etu = 1
 natural join:
 >>select * from nom_table join nom_table2
 exemple: select * from etudiant join cours
+
 >>select * from nom_table join nom_table2 join nom_table3
+exemple: select * from etudiant join note join cours 
 
 suprression 
 >>delete from nomtable [where ...]
+exemple: delete from etudiant where nom like ia
 
 current time
 >>now()
 
 update
->>update set nom = haha from nom_table [where ...]
+>>update set nom_col = ... from nom_table [where ...]
+exemple: update set nom = Tiavina from etudiant where nom like jj
 
 quitter le programme
 >>bye

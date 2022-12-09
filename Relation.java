@@ -33,14 +33,12 @@ public class Relation {
             inull=0;
             v=new Vector<String>();
             for(int col=0;col<content[row].length;col++){
-                System.out.println((String) content[row][col]);
                 v.add((String) content[row][col]);
                 if(content[row][col]==null){
                     inull++;
                 }
             }
-            if(inull==nomColonnes.length-1){
-                System.out.println("inull<nomColonnes.length");
+            if(inull!=nomColonnes.length){
                 all.add(v);
             }
         }   
