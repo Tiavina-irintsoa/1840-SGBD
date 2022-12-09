@@ -24,7 +24,6 @@ public class Fichier extends File{
     public void creerTable(String[] nomCols) throws Exception{
         if(this.exists()==false){
             this.mkdir();
-            System.out.println(path+"/donnees");
 
             Fichier  nomColonnes=new Fichier(path+"/nomcolonnes");
             nomColonnes.createNewFile();
@@ -66,12 +65,10 @@ public class Fichier extends File{
                 directory.drop();
             }
             inside[i].delete();
-            System.out.println("delete");
         }
         this.delete();
     }
     public Vector<String> read(String fichier) throws Exception{
-        System.out.println("Fichier.read()");
         Scanner sc=new Scanner(new File(this.path+"/"+fichier));
         Vector<String> v=new Vector<String>();
         String nextLine=null;

@@ -30,7 +30,6 @@ public class Execution {
         this.listeDatabases=new Database[files.length];
         try {
             for(int i=0;i<files.length;i++){
-                System.out.println("base de donnees"+files[i].getName());
                 listeDatabases[i]=new Database(files[i].getName());
                 if(used!=null){
                     if(listeDatabases[i].getNom().compareTo(used.getNom())==0){
@@ -83,14 +82,12 @@ public class Execution {
         Vector<String> vrais=new Vector<String>();
         for(int i=0;i<mots.length;i++){
             if(mots[i].compareToIgnoreCase(" ")!=-1){
-                System.out.println(mots[i]);
                 vrais.add(mots[i].trim());
             }
         }
 
         String[] res=new String[vrais.size()];
         for(int i=0;i<vrais.size();i++){
-            System.out.println("res[i] "+vrais.get(i));
             res[i]=vrais.get(i);
         }
         return res;
@@ -113,7 +110,6 @@ public class Execution {
         KeyWord initiateur=new Create();
         while(initiateur!=null){
             if(locate(mots,initiateur.getIntitule())!=-1){
-                System.out.println(initiateur.getIntitule());
                 kw.add(initiateur);
             }
             initiateur=initiateur.next();
@@ -129,7 +125,6 @@ public class Execution {
             int nearest=kw.get(ikw).nearest(mots,kw,locate,kw.get(ikw).getIntitule());
             for(int i=locate+1;i<nearest;i++){
                 args.add(mots[i]);
-                System.out.println("args: "+mots[i]);
             }  
             res=kw.get(ikw).execute(res,this,args);          
             ikw++;

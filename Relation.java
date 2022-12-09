@@ -289,15 +289,10 @@ public class Relation {
         int[] colsindex=new int[2];
         try{
             for(int i=0;i<this.nomColonnes.length;i++){
-                System.out.println("colonnes"+nomColonnes[i]+" seen");
-                System.out.println("yes");
-                System.out.println("length"+b.nomColonnes.length);
                 for(int ib=0;ib<b.nomColonnes.length;ib++){
-                    System.out.println(" sy colonnes"+b.nomColonnes[ib]);
                     if(nomColonnes[i].compareToIgnoreCase(b.nomColonnes[ib])==0){
                         colsindex[0]=i;
                         colsindex[1]=ib;
-                        System.out.println("nahita colonnes mitovy"+i+","+ib);
                         return colsindex;
                     }
                 }
@@ -311,8 +306,6 @@ public class Relation {
 
     //join
     public Relation join(Relation b)throws Exception{
-        System.out.println("nididtra join");
-        System.out.println(b.getNom()+" nom de l;autre base");
         int[] commoncol=getCommonCol(b);
         
         int acol=commoncol[0];
@@ -345,7 +338,6 @@ public class Relation {
     public Relation intersection(Relation b){
         Vector v=new Vector();
         if(content[0].length!=b.content[0].length){
-            System.out.println("Les relations n'ont pas le meme nombre de colonnes");
             return new Relation (new String[0], new Object[0][0],null);
         }
 
@@ -382,9 +374,6 @@ public class Relation {
     public Relation difference(Relation b){
         Vector v=new Vector();
         if(content[0].length!=b.content[0].length){
-            System.out.println(content[0].length);
-            System.out.println(b.content[0].length);
-            System.out.println("Les relations n'ont pas le meme nombre de colonnes");
             return new Relation (new String[0], new Object[0][0],null);
         }
 
@@ -394,7 +383,6 @@ public class Relation {
         for(int i=0;i<asort.length;i++){
             if(contains(bsort,asort[i])==false){
                 v.add(asort[i]);
-                System.out.println(String.valueOf(asort[i][col])+" ito");
             }
         }
                 
@@ -436,7 +424,6 @@ public class Relation {
     }
     // division this/r1 , ing , rec
     public Relation division(Relation r1, String colonne1, String colonne2){
-        System.out.println("Relation.division()");
         String[] ingrec=new String[2];
         ingrec[0]=colonne2;
         ingrec[1]=colonne1;
@@ -446,21 +433,11 @@ public class Relation {
         rec[0]=colonne2;
 
         Relation r2=r1.projection(ing);
-        System.out.println("R2");
-        r2.afficher();
         Relation r3=projection(rec).distinct(colonne2);
-        System.out.println("r3");
-        r3.afficher();
         Relation r4=r3.ProduitCartesien(r2);
-        System.out.println("r4");
-        r4.afficher();
         Relation proj=this.projection(ingrec);
-        System.out.println("r5");
         Relation r5=r4.difference(proj);
-        r5.afficher();
         Relation r6=r5.projection(rec);
-        System.out.println("r6");
-        r6.afficher();
         Relation r7=r3.difference(r6);
         return r7;
     }
@@ -493,7 +470,6 @@ public class Relation {
         for(int i=0;i<this.content.length;i++){
             for(int j=0;j<a.content.length;j++){
                 resultcontent[ires]=associateContent(a.content[j], i);
-                System.out.println(String.valueOf(a.content[j][0]));
                 ires++;
             }   
         }
@@ -505,7 +481,6 @@ public class Relation {
     }
     //selection
     public Relation selection(String nomCol, String seq, String compare){
-        System.out.println("niditra");
         int icol=getColIndex(nomCol);
         Object[][] resultcontent=new Object[content.length][nomColonnes.length];
         int ires=0;

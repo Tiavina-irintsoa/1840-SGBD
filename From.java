@@ -30,7 +30,6 @@ public class From extends KeyWord{
             throw new Exception("Aucune base de donnees selectionnee");
         }
         if(exec.getBdd().contains(args.get(0))==-1){
-            System.out.println("nomtable"+args.get(0));
             throw new Exception("Table inexistante");
         }
     }

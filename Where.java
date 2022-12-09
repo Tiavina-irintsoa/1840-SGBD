@@ -18,7 +18,6 @@ public class Where extends KeyWord{
             int next=3;
             while(args.get(next).compareToIgnoreCase("or")==0 || args.get(next).compareToIgnoreCase("and")==0){
                 Relation r1=condition(args.get(next+2),(Relation) res, args.get(next+3), args.get(next+1));
-                System.out.println("R1");
                 r1.afficher();
                 if(args.get(next).compareToIgnoreCase("or")==0){
                     r=r.union(r1);

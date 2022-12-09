@@ -18,8 +18,9 @@ public class Client {
             clientSocket = new Socket("localhost",1000);
             os = clientSocket.getOutputStream();
             is = clientSocket.getInputStream();
-
-            System.out.println("1840-SGBD");
+            System.out.println("");
+            System.out.println("____________1840-SGBD___________");
+            System.out.println("");
             //thread d'envoi de requetes
             ClientSend clientsend=new ClientSend(sc, os, clientSocket);
             clientsend.start();

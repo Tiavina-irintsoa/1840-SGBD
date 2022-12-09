@@ -9,7 +9,6 @@ public class Use extends KeyWord{
     }
     public Object execute(Object res, Execution exec,Vector<String> args) throws Exception{
         try {
-            System.out.println("Use.execute()");
             exec.setUsed(args.get(0));
             return "database changed";
         } catch (Exception e) {
