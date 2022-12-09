@@ -19,7 +19,7 @@ public class Client {
             os = clientSocket.getOutputStream();
             is = clientSocket.getInputStream();
             System.out.println("");
-            System.out.println("____________1840-SGBD___________");
+            System.out.println("____________1840-SGBD____________");
             System.out.println("");
             //thread d'envoi de requetes
             ClientSend clientsend=new ClientSend(sc, os, clientSocket);
