@@ -2,6 +2,10 @@ Changer de hote: client.java
 
 pour demarrer le serveur: serveur.bat
 pour demarrer un client: client.bat
+les base de donnees sont les repertoires dans "database/"
+    les tables sont les repertoires dans "database/nom_de_la_base"
+        les noms de colonnes sont dans le fichier "nomcolonnes"
+        les donnees sont dans le fichier "donnees"
 
 la grammaire:
 -insensible a la casse sauf pour les donnees
