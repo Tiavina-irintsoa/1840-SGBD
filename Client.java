@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.*;
 
+import datacontainer.Fichier;
 import run.ClientReceive;
 import run.ClientSend;
 
@@ -15,7 +16,10 @@ public class Client {
         final Scanner sc = new Scanner(System.in);
         try {
             //connexion socket
-            clientSocket = new Socket("localhost",1000);
+            HostPort hp=Fichier.getHostPort();
+            String host=hp.getHost();
+            int port=hp.getPort();
+            clientSocket = new Socket(host,port);
             os = clientSocket.getOutputStream();
             is = clientSocket.getInputStream();
             System.out.println("");

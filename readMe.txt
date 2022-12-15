@@ -1,4 +1,4 @@
-Changer de hote: client.java
+Changer de hote ou de addresse ip: config/config.txt
 
 pour demarrer le serveur: serveur.bat
 pour demarrer un client: client.bat

@@ -1,18 +1,23 @@
 package connection;
 
+import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+import datacontainer.Fichier;
 
 public class Server {
     public static void main(String[] args) {
         final ServerSocket serverSocket;
         final OutputStream os;
         final InputStream is;
-        int port=1000;
+        int port;
         try {
+            port=Fichier.getHostPort().getPort();
             serverSocket = new ServerSocket(port);
+            System.out.println("Port:"+port);
             System.out.println("En attende de clients...");
             int iduser=1;
             while(true){
@@ -28,7 +33,7 @@ public class Server {
                 // client = null;
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
     }
 }

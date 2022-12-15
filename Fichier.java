@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.Vector;
 
+import connection.HostPort;
 
 import java.io.File;
 public class Fichier extends File{
@@ -67,6 +68,22 @@ public class Fichier extends File{
             inside[i].delete();
         }
         this.delete();
+    }
+
+    public static HostPort getHostPort() throws Exception{
+        HostPort hp=new HostPort();
+        Scanner sc=new Scanner(new File("config/config.txt"));
+        Vector<String> v=new Vector<String>();
+        String nextLine=null;
+        while(sc.hasNextLine()==true){
+            nextLine=sc.nextLine();
+            String content=nextLine.split(":")[1];
+            v.add(content);
+        }
+        hp.setHost(v.get(1));
+        hp.setPort(v.get(0));
+        sc.close();
+        return hp;
     }
     public Vector<String> read(String fichier) throws Exception{
         Scanner sc=new Scanner(new File(this.path+"/"+fichier));
