@@ -13,7 +13,7 @@ public class HostPort {
         if(port.length()==0){         
             throw new Exception("Le port est nul");
         }
-        if(p<0 || p>9999){                  // si le port est negatif ou depasse les 4 chiffres
+        if(p<1000 || p>9999){                  // si le port est negatif ou depasse les 4 chiffres
             throw new Exception("Port invalide");       
         }
         

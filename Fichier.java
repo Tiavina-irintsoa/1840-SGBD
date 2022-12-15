@@ -77,8 +77,11 @@ public class Fichier extends File{
         String nextLine=null;
         while(sc.hasNextLine()==true){
             nextLine=sc.nextLine();
-            String content=nextLine.split(":")[1];
+            String content=nextLine.split(":")[1].trim();
             v.add(content);
+        }
+        if(v.size()<2){
+            throw new Exception("Hote ou port introuvable");
         }
         hp.setHost(v.get(1));
         hp.setPort(v.get(0));
