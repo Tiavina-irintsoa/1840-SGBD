@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+import run.*;
 import datacontainer.Fichier;
 
 public class Server {
@@ -19,14 +19,12 @@ public class Server {
             serverSocket = new ServerSocket(port);
             System.out.println("Port:"+port);
             System.out.println("En attende de clients...");
-            int iduser=1;
             while(true){
                 System.out.println("Attente");
                 Socket client =  serverSocket.accept();
                 try {
-                    User user=new User(iduser);
-                    user.interact(client);
-                    iduser++;
+                    ServerReceive serverReceive= new ServerReceive(client);
+                    serverReceive.start();
                 } catch (Exception e) {
                     System.err.println(e);
                 }

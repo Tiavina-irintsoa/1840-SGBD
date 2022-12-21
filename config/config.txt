@@ -1,2 +1,2 @@
-port:1890
+port:1233
 ipaddress:localhost
